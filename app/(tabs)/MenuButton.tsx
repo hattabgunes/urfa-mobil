@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Modal, Platform, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const quickLinks = [
   { title: 'Ana Sayfa', route: '/(tabs)/home', icon: '🏠' },
@@ -18,8 +18,11 @@ export default function MenuButton() {
   const router = useRouter();
 
   return (
-    <>
-      <TouchableOpacity style={styles.hamburgerButton} onPress={() => setModalVisible(true)}>
+    <SafeAreaView style={{ position: 'absolute', top: 0, right: 0, zIndex: 20 }}>
+      <TouchableOpacity
+        style={[styles.hamburgerButton, Platform.OS === 'ios' || Platform.OS === 'android' ? styles.hamburgerButtonMobile : null]}
+        onPress={() => setModalVisible(true)}
+      >
         <Text style={styles.hamburgerText}>☰</Text>
       </TouchableOpacity>
       <Modal
@@ -38,7 +41,7 @@ export default function MenuButton() {
                   style={styles.quickLinkCard}
                   onPress={() => {
                     setModalVisible(false);
-                    router.push(link.route);
+                    router.push(link.route as string);
                   }}
                 >
                   <Text style={styles.quickLinkIcon}>{link.icon}</Text>
@@ -49,7 +52,7 @@ export default function MenuButton() {
           </View>
         </TouchableOpacity>
       </Modal>
-    </>
+    </SafeAreaView>
   );
 }
 
@@ -70,6 +73,15 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.08,
     shadowRadius: 8,
+  },
+  hamburgerButtonMobile: {
+    top: 36,
+    right: 16,
+    width: 54,
+    height: 54,
+    elevation: 6,
+    shadowOpacity: 0.18,
+    shadowRadius: 16,
   },
   hamburgerText: {
     fontSize: 28,
