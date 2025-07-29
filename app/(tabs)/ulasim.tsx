@@ -45,7 +45,7 @@ export default function Ulasim() {
       <Text style={styles.title}>Şanlıurfa Ulaşım Haritası</Text>
       {Platform.OS === 'web' ? (
         <View style={styles.webWarningBox}>
-          <Text style={styles.webWarningText}>Harita sadece mobil uygulamada görüntülenebilir.</Text>
+          <Text style={styles.webWarningText}>Mobilde haritayı görebilirsiniz.</Text>
         </View>
       ) : (
         <MapView
