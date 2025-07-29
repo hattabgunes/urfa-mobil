@@ -35,7 +35,7 @@ const mekanlar = [
     aciklama: 'Hz. İbrahim’in doğduğuna inanılan kutsal mağara.',
     lat: 37.1593,
     lon: 38.7972,
-    ikon: '🕋',
+    ikon: '🕳️',
   },
   {
     id: '5',
@@ -156,7 +156,7 @@ export default function TarihiYerler() {
               <Text style={styles.mekanIsim}>{item.isim}</Text>
             </View>
             <Text style={styles.mekanAciklama}>{item.aciklama}</Text>
-          </View>
+    </View>
         )}
         contentContainerStyle={{ paddingBottom: 24 }}
       />

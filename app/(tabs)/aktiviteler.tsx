@@ -37,20 +37,6 @@ export default function Aktiviteler() {
     setAksam(rastgeleOneri(aksamOneriler));
   };
 
-  // Hava durumu kutusu için sabit veri
-  const havaDurumu = {
-    durum: 'Güneşli',
-    derece:38,
-  };
-  let mesaj = '';
-  if (havaDurumu.durum === 'Güneşli' && havaDurumu.derece < 40) {
-    mesaj = 'Güneşli ve güzel bir hava var, tam gezmelik!';
-  } else if (havaDurumu.derece >= 40) {
-    mesaj = 'Bugün aşırı sıcak, kapalı alanları tercih edebilirsiniz.';
-  } else {
-    mesaj = 'Bugün hava durumu: ' + havaDurumu.durum;
-  }
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Aktivite Önerileri</Text>
@@ -73,12 +59,6 @@ export default function Aktiviteler() {
           <Text style={styles.cardIcon}>{aksam.icon}</Text>
           <Text style={styles.cardText}>{aksam.text}</Text>
         </View>
-      </View>
-      {/* Hava durumu kutusu */}
-      <View style={styles.weatherBox}>
-        <Text style={styles.weatherTitle}>Bugün Şanlıurfa’da Hava</Text>
-        <Text style={styles.weatherDegree}>{havaDurumu.durum}= {havaDurumu.derece}°C</Text>
-        <Text style={styles.weatherMsg}>{mesaj}</Text>
       </View>
     </View>
   );
@@ -140,34 +120,6 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   cardText: {
-    fontSize: 15,
-    color: '#444',
-    textAlign: 'center',
-  },
-  weatherBox: {
-    backgroundColor: '#ffe4b5',
-    borderRadius: 18,
-    padding: 18,
-    alignItems: 'center',
-    marginTop: 32,
-    marginBottom: 18,
-    width: '90%',
-    alignSelf: 'center',
-    elevation: 2,
-  },
-  weatherTitle: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    color: '#b05e00',
-    marginBottom: 6,
-  },
-  weatherDegree: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#b05e00',
-    marginBottom: 4,
-  },
-  weatherMsg: {
     fontSize: 15,
     color: '#444',
     textAlign: 'center',
